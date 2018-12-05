@@ -54,25 +54,28 @@ Http.onreadystatechange = function(e){
             newFrqs.push(result);
         }
 
+        console.log("Resulting frequency: " + result);
+        
+
         // get 1st frequency reached twice:
         for (let i=0; i < newFrqs.length-1; i++) {
 
-            for (let j=0; j < newFrqs.length-1; j++) {
+            for (let j=0; j < i; j++) {
 
-                console.log(newFrqs[j]);
-
-                if (i == j ) continue;
+                if (j == i ) {
+                    console.log(`j == i == ${j}, continue`);                    
+                    continue;
+                }
                 else if (newFrqs[i] == newFrqs[j]) {
                     reachedTwice = newFrqs[j];
                     console.log("break");
+                    console.log("1st frequency reached twice: " + reachedTwice);
                     break;
-                }
+                } else { console.log(j + ": " + newFrqs[j]); }
+                
             }
 
             if (reachedTwice) break;
         }
-
-        console.log("Resulting frequency: " + result);
-        console.log("1st frequency reached twice: " + reachedTwice);
     }
 };
