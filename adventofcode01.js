@@ -40,42 +40,42 @@ Http.onreadystatechange = function(e){
     if (this.readyState === XMLHttpRequest.DONE) {
         let resp = this.response;   //let resp = this.responseText; (both returning a string.)
 
+        //test:
+        resp = "+7\n+7\n-2\n-7\n-4";
+
         const frqChangeList = resp.split("\n");
-        //let frqChangeListInt = [];     // not neccessary
         let result = 0;
-        let newFrqs = [];
+        let newFrqs = [0];
         let reachedTwice;
 
         // get resulting frequency:
         for (let i=0; i < frqChangeList.length-1; i++) {
             let a = parseInt(frqChangeList[i]);             //or: let a = Number(frqChangeList[i]);
-            //frqChangeListInt.push(a);  // not neccessary
             result += a;
             newFrqs.push(result);
         }
 
         console.log("Resulting frequency: " + result);
-        
 
+
+        /*
         // get 1st frequency reached twice:
         for (let i=0; i < newFrqs.length-1; i++) {
 
-            for (let j=0; j < i; j++) {
+            for (let j=0; j <= i; j++) {
 
                 if (j == i ) {
-                    console.log(`j == i == ${j}, continue`);                    
                     continue;
                 }
                 else if (newFrqs[i] == newFrqs[j]) {
                     reachedTwice = newFrqs[j];
-                    console.log("break");
                     console.log("1st frequency reached twice: " + reachedTwice);
                     break;
-                } else { console.log(j + ": " + newFrqs[j]); }
-                
+                }                
             }
 
             if (reachedTwice) break;
         }
+        */
     }
 };
